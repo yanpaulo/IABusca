@@ -48,5 +48,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BuscaBidirecional\BuscaBidirecional.csproj">
+      <Project>{f07e0fb5-b39c-42c1-abfb-ba4995ee5171}</Project>
+      <Name>BuscaBidirecional</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
