@@ -6,9 +6,9 @@ Timisoara: Arad, Lugoj
 Lugoj: Timisoara, Mehadia 
 Mehadia: Lugoj, Drobeta
 Drobeta: Mehadia, Craiova
-Craiova: Drobeta, Rimnicu Vileea
+Craiova: Drobeta, Rimnicu Vileea, Pitesti
 Rimnicu Vileea: Sibiu, Pitesti, Craiova
-Pitesti: Rimnicu Vileea, Craiova, Bucareste
+Pitesti: Rimnicu Vileea, Craiova, ucareste
 Bucareste: Giurgiu, Fagaras, Urziceni
 Giurgiu: Bucareste
 Fagaras: Sibiu, Bucareste
