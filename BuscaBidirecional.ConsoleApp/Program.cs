@@ -11,7 +11,7 @@ namespace BuscaBidirecional.ConsoleApp
         static void Main(string[] args)
         {
 
-            //Teste de busca em largura.
+            //Teste de busca bidirecional.
             var mapa = Mapa.FromFile();
             var problema = new Problema
             {
@@ -19,7 +19,7 @@ namespace BuscaBidirecional.ConsoleApp
                 Origem = mapa.Locais.First(l => l.Nome.ToLower().Contains("zerind")),
                 Destino = mapa.Locais.Last(l => l.Nome.ToLower().Contains("fagaras"))
             };
-            var bp = new BuscaEmProfundidade(problema);
+            var bp = new BuscaBidirecional(problema);
 
             while (!bp.AtingiuObjetivo && !bp.Falha)
             {

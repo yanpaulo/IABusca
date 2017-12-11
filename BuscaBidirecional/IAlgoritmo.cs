@@ -6,8 +6,6 @@ namespace BuscaBidirecional
 {
     public interface IAlgoritmo
     {
-        Arvore Arvore { get; }
-        
         IList<Local> Explorado { get; }
 
         IEnumerable<No> Borda { get; }
