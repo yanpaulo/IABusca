@@ -7,8 +7,9 @@ namespace BuscaBidirecional
 {
     public enum TipoAlgoritmo
     {
+        BuscaEmLargura,
         BuscaEmProfundidade,
-        BuscaEmLargura
+        
     }
     public class BuscaBidirecional : IAlgoritmo
     {

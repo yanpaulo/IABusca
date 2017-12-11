@@ -23,20 +23,4 @@ namespace BuscaBidirecional
 
         public Local Local { get; set; }
     }
-
-    //public interface IAlgoritmo
-    //{
-    //    Problema Problema { get; set; }
-
-    //    Arvore Arvore { get; }
-
-    //    IEnumerable<Local> Explorado { get; }
-
-    //    IEnumerable<No> Borda { get; }
-
-    //    No Objetivo { get; }
-
-    //    void Expande();
-    //}
-
 }
