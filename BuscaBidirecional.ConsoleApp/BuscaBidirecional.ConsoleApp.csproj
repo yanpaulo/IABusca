@@ -7,7 +7,7 @@
     <ProjectGuid>{FAC117F2-2CAF-4850-BE57-B430CAD69E6A}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>BuscaBidirecional.ConsoleApp</RootNamespace>
-    <AssemblyName>BuscaBidirecional.ConsoleApp</AssemblyName>
+    <AssemblyName>busca</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
