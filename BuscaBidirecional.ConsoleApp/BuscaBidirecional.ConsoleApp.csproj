@@ -50,7 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BuscaBidirecional\BuscaBidirecional.csproj">
-      <Project>{f07e0fb5-b39c-42c1-abfb-ba4995ee5171}</Project>
+      <Project>{1a5064bf-dc38-4bb7-8e4c-764d93e337f0}</Project>
       <Name>BuscaBidirecional</Name>
     </ProjectReference>
   </ItemGroup>

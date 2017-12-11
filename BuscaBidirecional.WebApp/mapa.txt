@@ -1,0 +1,5 @@
+﻿Oradea: Zerind, Sibiu
+Zerind: Oradea, Arad
+Arad: Zerind, Sibiu, Timisoara
+Sibiu: Oradea, Arad, Fagaras
+Fagaras: Sibiu
