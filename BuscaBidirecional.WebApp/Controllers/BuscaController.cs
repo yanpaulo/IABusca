@@ -50,6 +50,7 @@ namespace BuscaBidirecional.WebApp.Controllers
                     {
                         algoritmo.Expande();
                         saidaListas += algoritmo.ImprimeListas().Replace("\n", "<br />") + "<br />";
+                        saidaListas += "------------------------- <br />";
                     }
 
                     ViewBag.Lists = saidaListas;
