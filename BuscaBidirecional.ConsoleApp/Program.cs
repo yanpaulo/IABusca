@@ -10,32 +10,34 @@ namespace BuscaBidirecional.ConsoleApp
     {
         static void Main(string[] args)
         {
+            RodaAlgoritmo(args);
 
-            //Teste de busca bidirecional.
-            var mapa = Mapa.FromFile();
-            var problema = new Problema
-            {
-                Mapa = mapa,
-                Origem = mapa.Locais.First(l => l.Nome.ToLower().Contains("zerind")),
-                Destino = mapa.Locais.Last(l => l.Nome.ToLower().Contains("fagaras"))
-            };
-            var bp = new BuscaBidirecional(problema);
+            ////Teste de busca bidirecional.
+            //var mapa = Mapa.FromFile();
+            //var problema = new Problema
+            //{
+            //    Mapa = mapa,
+            //    Origem = mapa.Locais.First(l => l.Nome.ToLower().Contains("zerind")),
+            //    Destino = mapa.Locais.Last(l => l.Nome.ToLower().Contains("fagaras"))
+            //};
+            //var bp = new BuscaBidirecional(problema);
 
-            while (!bp.AtingiuObjetivo && !bp.Falha)
-            {
-                bp.Expande();
-                Console.WriteLine(bp.ImprimeListas());
-            }
+            //while (!bp.AtingiuObjetivo && !bp.Falha)
+            //{
+            //    bp.Expande();
+            //    Console.WriteLine(bp.ImprimeListas());
+            //}
 
-            Console.WriteLine(bp.ImprimeCaminho());
+            //Console.WriteLine(bp.ImprimeCaminho());
 
-            Console.ReadKey();
+            //Console.ReadKey();
         }
 
         static void RodaAlgoritmo(string[] args)
         {
             string mapFile = null;
-            string a1 = null, a2 = null;
+            TipoAlgoritmo? a = null;
+            TipoAlgoritmo a1 = TipoAlgoritmo.BuscaEmLargura, a2 = TipoAlgoritmo.BuscaEmLargura;
             string orig = "oradea", dest = "fagaras";
             bool verbose = false;
 
@@ -45,11 +47,14 @@ namespace BuscaBidirecional.ConsoleApp
                 {
                     switch (args[i].Remove(0, 1))
                     {
+                        case "a":
+                            a = args[++i] == "dfs" ? TipoAlgoritmo.BuscaEmProfundidade : TipoAlgoritmo.BuscaEmLargura;
+                            break;
                         case "a1":
-                            a1 = args[++i];
+                            a1 = args[++i] == "dfs" ? TipoAlgoritmo.BuscaEmProfundidade : TipoAlgoritmo.BuscaEmLargura;
                             break;
                         case "a2":
-                            a2 = args[++i];
+                            a2 = args[++i] == "dfs" ? TipoAlgoritmo.BuscaEmProfundidade : TipoAlgoritmo.BuscaEmLargura;
                             break;
                         case "m":
                             mapFile = args[++i];
@@ -58,7 +63,8 @@ namespace BuscaBidirecional.ConsoleApp
                             verbose = true;
                             break;
                         default:
-                            throw new ArgumentException("Parâmetro não reconhecido.");
+                            ImprimeAjuda();
+                            return;
                     }
                 }
                 else
@@ -78,7 +84,7 @@ namespace BuscaBidirecional.ConsoleApp
 
             var mapa = mapFile != null ? Mapa.FromFile(mapFile) : Mapa.FromFile();
             var origem = mapa.Locais.SingleOrDefault(l => l.Nome.ToLower().Contains(orig.ToLower()));
-            var destino = mapa.Locais.SingleOrDefault(l => l.Nome.ToLower().Contains(orig.ToLower()));
+            var destino = mapa.Locais.SingleOrDefault(l => l.Nome.ToLower().Contains(dest.ToLower()));
             if (origem == null || destino == null)
             {
                 throw new ArgumentException("Local especificado não existe.");
@@ -89,10 +95,59 @@ namespace BuscaBidirecional.ConsoleApp
                 Origem = origem,
                 Destino = destino
             };
-            var algoritmo1 = a1 == "dfs" ? new BuscaEmLargura(problema) : new BuscaEmLargura(problema);
-            var algoritmo2 = a2 == "dfs" ? new BuscaEmLargura(problema) : new BuscaEmLargura(problema);
+            
+            //cria a busca apropriada e a executa
+            if (a.HasValue)
+            {
+                var busca = a == TipoAlgoritmo.BuscaEmLargura ? 
+                    new BuscaEmLargura(problema) as IAlgoritmo : 
+                    new BuscaEmProfundidade(problema);
 
-            //Usa algoritmo1 e algoritmo2 para criar BuscaBidirecional.
+                while (!busca.AtingiuObjetivo)
+                {
+                    busca.Expande();
+                    if (verbose)
+                    {
+                        Console.WriteLine(busca.ImprimeListas());
+                    }
+                }
+
+                Console.WriteLine($"Rota: {busca.ImprimeCaminho()}");
+            }
+            else
+            {
+                var busca = new BuscaBidirecional(problema, a1, a2);
+
+                while (!busca.AtingiuObjetivo)
+                {
+                    busca.Expande();
+                    if (verbose)
+                    {
+                        Console.WriteLine(busca.ImprimeListas());
+                    }
+                }
+
+                Console.WriteLine(busca.ImprimeCaminho());
+            }
+
+        }
+
+        private static void ImprimeAjuda()
+        {
+            const string str = "Uso: \r\n" +
+                "\tbusca.exe [-a1 algoritmo1] [-a2 algoritmo2] [-m mapfile] [-v] [origem] destino\n" +
+                "\t\tExibe o caminho de origem a destino utilizando o algoritmo de Busca Bidirecional, opcionalmente especificando os sub-algoritmos a1 e a2.\n\n" +
+                "\tbusca.exe [-a algoritmo] [-m mapfile] [-v] [origem] destino.\n" +
+                "\t\tExibe o caminho de origem a destino utilizando o algoritmo opcionalmente especificado.\n\n" +
+                "\tbusca.exe\n" +
+                "\t\tExibe o caminho de Oradea a Fagaras utilizando Busca Bidirecional, com a1 e a2 sendo bfs.\n\n" +
+                "\nOpções:\n" +
+                "-a, -a1, -a2:      Especificadores de algoritmo. O valor pode ser bfs ou dfs.\n" +
+                "-m:                Especificador de arquivo de mapa.\n" +
+                "-v:                Habilita saída verbosa\n" +
+                "origem, destino:   Nomes de locais\n" +
+                "-?:                Exibe esta mensagem.\n";
+            Console.WriteLine(str);
         }
     }
 
