@@ -5,21 +5,21 @@ using System.Linq;
 
 namespace BuscaBidirecional
 {
-    public class BuscaEmLargura : BuscaBase
+    public class BuscaEmProfundidade : BuscaBase
     {
-        private Queue<No> borda = new Queue<No>();
+        private Stack<No> borda = new Stack<No>();
 
-        public BuscaEmLargura(Problema problema) : 
-            base(problema)
+        public BuscaEmProfundidade(Problema problema) 
+            : base(problema)
         {
-            borda.Enqueue(Arvore.Raiz);
+            borda.Push(Arvore.Raiz);
         }
 
         public override IEnumerable<No> Borda => borda;
-        
+
         public override void Expande()
         {
-            var no = borda.Dequeue();
+            var no = borda.Pop();
             Explorado.Add(no.Local);
 
             var ligacoes = no.Local.Ligacoes.Where(l => !Explorado.Contains(l) && !borda.Any(b => b.Local == l));
@@ -31,7 +31,7 @@ namespace BuscaBidirecional
                     Pai = no,
                     Local = local
                 };
-                borda.Enqueue(filho);
+                borda.Push(filho);
 
                 if (local == Problema.Destino)
                 {

@@ -19,7 +19,7 @@ namespace BuscaBidirecional.ConsoleApp
                 Origem = mapa.Locais.First(l => l.Nome.ToLower().Contains("zerind")),
                 Destino = mapa.Locais.Last(l => l.Nome.ToLower().Contains("fagaras"))
             };
-            var bp = new BuscaEmLargura(problema);
+            var bp = new BuscaEmProfundidade(problema);
 
             while (!bp.AtingiuObjetivo && !bp.Falha)
             {
