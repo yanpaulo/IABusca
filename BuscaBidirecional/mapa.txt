@@ -2,4 +2,19 @@
 Zerind: Oradea, Arad
 Arad: Zerind, Sibiu, Timisoara
 Sibiu: Oradea, Arad, Fagaras
-Fagaras: Sibiu
+Timisoara: Arad, Lugoj
+Lugoj: Timisoara, Mehadia 
+Mehadia: Lugoj, Drobeta
+Drobeta: Mehadia, Craiova
+Craiova: Drobeta, Rimnicu Vileea
+Rimnicu Vileea: Sibiu, Pitesti, Craiova
+Pitesti: Rimnicu Vileea, Craiova, Bucareste
+Bucareste: Giurgiu, Fagaras, Urziceni
+Giurgiu: Bucareste
+Fagaras: Sibiu, Bucareste
+Urziceni: Bucareste, Hirsova, Vaslui
+Hirsova: Urziceni, Eforie
+Eforie: Hirsova
+Vaslui: Urziceni, Iasi
+Iasi: Vaslui, Neamt
+Neamt: Iasi
