@@ -46,6 +46,7 @@
     <Compile Include="BuscaEmProfundidade.cs" />
     <Compile Include="Dominio.cs" />
     <Compile Include="IAlgoritmo.cs" />
+    <Compile Include="IProblema.cs" />
     <Compile Include="Problema.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

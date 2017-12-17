@@ -89,7 +89,7 @@ namespace BuscaBidirecional.ConsoleApp
             {
                 throw new ArgumentException("Local especificado não existe.");
             }
-            var problema = new Problema
+            var problema = new ProblemaMapa
             {
                 Mapa = mapa,
                 Origem = origem,
@@ -100,8 +100,8 @@ namespace BuscaBidirecional.ConsoleApp
             if (a.HasValue)
             {
                 var busca = a == TipoAlgoritmo.BuscaEmLargura ? 
-                    new BuscaEmLargura(problema) as IAlgoritmo : 
-                    new BuscaEmProfundidade(problema);
+                    new BuscaEmLargura<Local>(problema) as IAlgoritmo<Local> : 
+                    new BuscaEmProfundidade<Local>(problema);
 
                 while (!busca.AtingiuObjetivo)
                 {

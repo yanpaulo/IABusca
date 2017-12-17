@@ -11,15 +11,15 @@ namespace BuscaBidirecional
         BuscaEmProfundidade,
         
     }
-    public class BuscaBidirecional : IAlgoritmo
+    public class BuscaBidirecional : IAlgoritmo<Local>
     {
-        private IAlgoritmo a1, a2;
-        private No objetivo;
+        private IAlgoritmo<Local> a1, a2;
+        private No<Local> objetivo;
 
-        public BuscaBidirecional(Problema problema, TipoAlgoritmo a1 = TipoAlgoritmo.BuscaEmLargura, TipoAlgoritmo a2 = TipoAlgoritmo.BuscaEmLargura)
+        public BuscaBidirecional(ProblemaMapa problema, TipoAlgoritmo a1 = TipoAlgoritmo.BuscaEmLargura, TipoAlgoritmo a2 = TipoAlgoritmo.BuscaEmLargura)
         {
             Problema = problema;
-            var inverso = new Problema
+            var inverso = new ProblemaMapa
             {
                 Mapa = problema.Mapa,
                 Origem = problema.Destino,
@@ -27,12 +27,12 @@ namespace BuscaBidirecional
             };
 
             this.a1 = a1 == TipoAlgoritmo.BuscaEmLargura ? 
-                new BuscaEmLargura(problema) as IAlgoritmo : 
-                new BuscaEmProfundidade(problema);
+                new BuscaEmLargura<Local>(problema) as IAlgoritmo<Local> : 
+                new BuscaEmProfundidade<Local>(problema);
 
             this.a2 = a2 == TipoAlgoritmo.BuscaEmProfundidade ?
-                new BuscaEmLargura(inverso) as IAlgoritmo :
-                new BuscaEmProfundidade(inverso);
+                new BuscaEmLargura<Local>(inverso) as IAlgoritmo<Local> :
+                new BuscaEmProfundidade<Local>(inverso);
 
 
         }
@@ -42,18 +42,18 @@ namespace BuscaBidirecional
             .SelectMany(a => a)
             .ToList();
 
-        public IEnumerable<No> Borda => 
+        public IEnumerable<No<Local>> Borda => 
             new[] { a1.Borda, a2.Borda }
             .SelectMany(a => a)
             .ToList();
 
-        public No Objetivo => objetivo ?? a1.Objetivo ?? a2.Objetivo;
+        public No<Local> Objetivo => objetivo ?? a1.Objetivo ?? a2.Objetivo;
 
         public bool Falha => a1.Falha && a2.Falha;
 
         public bool AtingiuObjetivo => Objetivo != null;
 
-        public Problema Problema { get; private set; }
+        public IProblema<Local> Problema { get; private set; }
 
         public void Expande()
         {
@@ -100,8 +100,8 @@ a2:
 
         private void BuscaObjetivo()
         {
-            No no2 = null;
-            var no1 = a1.Borda.FirstOrDefault(n1 => a2.Borda.Any(n2 => (no2 = n2).Local == n1.Local));
+            No<Local> no2 = null;
+            var no1 = a1.Borda.FirstOrDefault(n1 => a2.Borda.Any(n2 => (no2 = n2).Estado == n1.Estado));
 
             //Se no1 != null, significa que ele "tocou" no2.
             if (no1 != null)

@@ -21,7 +21,7 @@ namespace BuscaBidirecional.WebApp.Controllers
         public ActionResult Index(Busca busca)
         {
             var mapa = Mapa.FromFile(Server.MapPath("~/mapa.txt"));
-            var problema = new Problema
+            var problema = new ProblemaMapa
             {
                 Mapa = mapa
             };

@@ -3,24 +3,22 @@ using System.Collections.Generic;
 
 namespace BuscaBidirecional
 {
-    public class Problema
+    public class ProblemaMapa : IProblema<Local>
     {
         public Mapa Mapa { get; set; }
 
         public Local Origem { get; set; }
 
         public Local Destino { get; set; }
+
+        public IEnumerable<Local> Caminhos(Local local) =>
+            local.Ligacoes;
     }
-
-    public class Arvore
+    
+    public class No<T>
     {
-        public No Raiz { get; set; }
-    }
+        public No<T> Pai { get; set; }
 
-    public class No
-    {
-        public No Pai { get; set; }
-
-        public Local Local { get; set; }
+        public T Estado { get; set; }
     }
 }

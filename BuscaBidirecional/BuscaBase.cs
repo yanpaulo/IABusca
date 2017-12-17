@@ -5,32 +5,28 @@ using System.Linq;
 
 namespace BuscaBidirecional
 {
-    public abstract class BuscaBase : IAlgoritmo
+    public abstract class BuscaBase<T> : IAlgoritmo<T>
     {
 
-        public BuscaBase(Problema problema)
+        public BuscaBase(IProblema<T> problema)
         {
             Problema = problema;
-
-            Arvore = new Arvore
+            Raiz = new No<T>
             {
-                Raiz = new No
-                {
-                    Local = Problema.Origem
-                }
+                Estado = Problema.Origem
             };
         }
 
-        public Problema Problema { get; private set; }
+        public IProblema<T> Problema { get; private set; }
 
-        public Arvore Arvore { get; private set; }
+        public No<T> Raiz { get; protected set; }
 
-        public No Objetivo { get; protected set; }
+        public No<T> Objetivo { get; protected set; }
 
-        public IList<Local> Explorado { get; private set; } = new List<Local>();
+        public IList<T> Explorado { get; private set; } = new List<T>();
 
-        public abstract IEnumerable<No> Borda { get; }
-        
+        public abstract IEnumerable<No<T>> Borda { get; }
+
         public bool AtingiuObjetivo => Objetivo != null;
 
         public bool Falha => !Borda.Any();

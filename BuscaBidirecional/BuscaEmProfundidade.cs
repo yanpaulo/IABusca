@@ -5,35 +5,36 @@ using System.Linq;
 
 namespace BuscaBidirecional
 {
-    public class BuscaEmProfundidade : BuscaBase
+    public class BuscaEmProfundidade<T> : BuscaBase<T>
     {
-        private Stack<No> borda = new Stack<No>();
+        private Stack<No<T>> borda = new Stack<No<T>>();
 
-        public BuscaEmProfundidade(Problema problema) 
+        public BuscaEmProfundidade(IProblema<T> problema) 
             : base(problema)
         {
-            borda.Push(Arvore.Raiz);
+            borda.Push(Raiz);
         }
 
-        public override IEnumerable<No> Borda => borda;
+        public override IEnumerable<No<T>> Borda => borda;
 
         public override void Expande()
         {
             var no = borda.Pop();
-            Explorado.Add(no.Local);
+            Explorado.Add(no.Estado);
 
-            var ligacoes = no.Local.Ligacoes.Where(l => !Explorado.Contains(l) && !borda.Any(b => b.Local == l));
+            
+            var ligacoes = Problema.Caminhos(no.Estado).Where(l => !Explorado.Contains(l) && !borda.Any(b => b.Estado.Equals(l)));
 
-            foreach (var local in ligacoes)
+            foreach (var ligacao in ligacoes)
             {
-                var filho = new No
+                var filho = new No<T>
                 {
                     Pai = no,
-                    Local = local
+                    Estado = ligacao
                 };
                 borda.Push(filho);
 
-                if (local == Problema.Destino)
+                if (ligacao.Equals(Problema.Destino))
                 {
                     Objetivo = filho;
                     return;

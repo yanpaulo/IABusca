@@ -5,35 +5,35 @@ using System.Linq;
 
 namespace BuscaBidirecional
 {
-    public class BuscaEmLargura : BuscaBase
+    public class BuscaEmLargura<T> : BuscaBase<T>
     {
-        private Queue<No> borda = new Queue<No>();
+        private Queue<No<T>> borda = new Queue<No<T>>();
 
-        public BuscaEmLargura(Problema problema) : 
+        public BuscaEmLargura(IProblema<T> problema) : 
             base(problema)
         {
-            borda.Enqueue(Arvore.Raiz);
+            borda.Enqueue(Raiz);
         }
 
-        public override IEnumerable<No> Borda => borda;
+        public override IEnumerable<No<T>> Borda => borda;
         
         public override void Expande()
         {
             var no = borda.Dequeue();
-            Explorado.Add(no.Local);
+            Explorado.Add(no.Estado);
+            
+            var caminhos = Problema.Caminhos(no.Estado).Where(e => !Explorado.Contains(e) && !borda.Any(b => b.Estado.Equals(e)));
 
-            var ligacoes = no.Local.Ligacoes.Where(l => !Explorado.Contains(l) && !borda.Any(b => b.Local == l));
-
-            foreach (var local in ligacoes)
+            foreach (var local in caminhos)
             {
-                var filho = new No
+                var filho = new No<T>
                 {
                     Pai = no,
-                    Local = local
+                    Estado = local
                 };
                 borda.Enqueue(filho);
 
-                if (local == Problema.Destino)
+                if (local.Equals(Problema.Destino))
                 {
                     Objetivo = filho;
                     return;
