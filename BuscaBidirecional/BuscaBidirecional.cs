@@ -37,11 +37,6 @@ namespace BuscaBidirecional
 
         }
         
-        public IList<Local> Explorado => 
-            new[] { a1.Explorado, a2.Explorado }
-            .SelectMany(a => a)
-            .ToList();
-
         public IEnumerable<No<Local>> Borda => 
             new[] { a1.Borda, a2.Borda }
             .SelectMany(a => a)
@@ -70,6 +65,7 @@ namespace BuscaBidirecional
             {
                 return;
             }
+
             BuscaObjetivo();
             if (AtingiuObjetivo)
             {
@@ -84,6 +80,7 @@ namespace BuscaBidirecional
             {
                 return;
             }
+
             BuscaObjetivo();
         }
 

@@ -6,31 +6,23 @@ namespace BuscaBidirecional
 {
     public interface IAlgoritmo <T>
     {
-        IList<T> Explorado { get; }
+        IProblema<T> Problema { get; }
 
+        No<T> Objetivo { get; }
+        
         IEnumerable<No<T>> Borda { get; }
         
-        No<T> Objetivo { get; }
-
         bool Falha { get; }
 
         bool AtingiuObjetivo { get; }
-
-        IProblema<T> Problema { get; }
-
+        
         void Expande();
+
+        string ImprimeListas();
     }
 
     public static class AlgoritmoExtensoes
     {
-        public static string ImprimeListas<T>(this IAlgoritmo<T> algoritmo)
-        {
-            var str = $@"
-Explorado:  [{ string.Join(", ", algoritmo.Explorado.Select(l => l.ToString())) }]
-Borda:      [{ string.Join(", ", algoritmo.Borda.Select(b => b.Estado.ToString())) }]";
-
-            return str;
-        }
 
         public static string ImprimeCaminho<T>(this IAlgoritmo<T> algoritmo)
         {

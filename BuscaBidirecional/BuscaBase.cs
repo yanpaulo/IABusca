@@ -32,5 +32,14 @@ namespace BuscaBidirecional
         public bool Falha => !Borda.Any();
 
         public abstract void Expande();
+
+        public string ImprimeListas()
+        {
+            var str = $@"
+Explorado:  [{ string.Join(", ", Explorado.Select(l => l.ToString())) }]
+Borda:      [{ string.Join(", ", Borda.Select(b => b.Estado.ToString())) }]";
+
+            return str;
+        }
     }
 }
