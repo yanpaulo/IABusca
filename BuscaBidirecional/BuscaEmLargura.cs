@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace BuscaBidirecional
 {
-    public class BuscaEmLargura<T> : BuscaBase<T>
+    public class BuscaEmLargura<T> : BuscaEmArvoreBase<T>
     {
         private Queue<No<T>> borda = new Queue<No<T>>();
 

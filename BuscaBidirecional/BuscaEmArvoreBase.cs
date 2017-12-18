@@ -5,10 +5,9 @@ using System.Linq;
 
 namespace BuscaBidirecional
 {
-    public abstract class BuscaBase<T> : IAlgoritmo<T>
+    public abstract class BuscaEmArvoreBase<T> : IAlgoritmo<T>
     {
-
-        public BuscaBase(IProblema<T> problema)
+        public BuscaEmArvoreBase(IProblema<T> problema)
         {
             Problema = problema;
             Raiz = new No<T>

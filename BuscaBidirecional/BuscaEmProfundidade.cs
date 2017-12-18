@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace BuscaBidirecional
 {
-    public class BuscaEmProfundidade<T> : BuscaBase<T>
+    public class BuscaEmProfundidade<T> : BuscaEmArvoreBase<T>
     {
         private Stack<No<T>> borda = new Stack<No<T>>();
 

@@ -40,9 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BuscaBase.cs" />
+    <Compile Include="BuscaEmArvoreBase.cs" />
     <Compile Include="BuscaBidirecional.cs" />
     <Compile Include="BuscaEmLargura.cs" />
+    <Compile Include="BuscaEmProfundidadeGrafo.cs" />
     <Compile Include="BuscaEmProfundidade.cs" />
     <Compile Include="Dominio.cs" />
     <Compile Include="IAlgoritmo.cs" />
