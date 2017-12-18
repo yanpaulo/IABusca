@@ -46,16 +46,20 @@
     <Compile Include="BuscaEmLargura.cs" />
     <Compile Include="BuscaEmProfundidadeGrafo.cs" />
     <Compile Include="BuscaEmProfundidadeArvore.cs" />
-    <Compile Include="Dominio.cs" />
+    <Compile Include="Mapa\Dominio.cs" />
     <Compile Include="IAlgoritmo.cs" />
     <Compile Include="IProblema.cs" />
-    <Compile Include="Problema.cs" />
+    <Compile Include="No.cs" />
+    <Compile Include="Mapa\ProblemaMapa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="mapa.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Aspirador\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace BuscaBidirecional
 {
@@ -13,14 +12,5 @@ namespace BuscaBidirecional
 
         public IEnumerable<Local> Caminhos(Local local) =>
             local.Ligacoes;
-    }
-    
-    public class No<T>
-    {
-        public No<T> Pai { get; set; }
-
-        public T Estado { get; set; }
-
-        public int Profundidade { get; set; }
     }
 }
