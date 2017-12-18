@@ -16,7 +16,7 @@ namespace BuscaBidirecional.Aspirador
             {
                 for (int j = 0; j < altura; j++)
                 {
-                    matriz[i, j] = new Posicao(largura, altura);
+                    matriz[i, j] = new Posicao(i, j);
                 }
             }
         }
