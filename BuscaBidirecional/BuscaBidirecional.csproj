@@ -40,6 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Aspirador\Matriz.cs" />
+    <Compile Include="Aspirador\Posicao.cs" />
+    <Compile Include="Aspirador\ProblemaAspirador.cs" />
     <Compile Include="BuscaAprofundamentoIterativo.cs" />
     <Compile Include="BuscaEmArvoreBase.cs" />
     <Compile Include="BuscaBidirecional.cs" />
@@ -58,8 +61,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Aspirador\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
