@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2006
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuscaBidirecional.ConsoleApp", "BuscaBidirecional.ConsoleApp\BuscaBidirecional.ConsoleApp.csproj", "{FAC117F2-2CAF-4850-BE57-B430CAD69E6A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuscaBidirecional.WebApp", "BuscaBidirecional.WebApp\BuscaBidirecional.WebApp.csproj", "{47DEE5B0-3FE9-4426-BE8E-6A791EC00292}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuscaBidirecional", "BuscaBidirecional\BuscaBidirecional.csproj", "{1A5064BF-DC38-4BB7-8E4C-764D93E337F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuscasCustomizadas", "BuscasCustomizadas\BuscasCustomizadas.csproj", "{508E4BDB-E5C0-42C3-82C8-F73B9A13CD91}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{1A5064BF-DC38-4BB7-8E4C-764D93E337F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A5064BF-DC38-4BB7-8E4C-764D93E337F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A5064BF-DC38-4BB7-8E4C-764D93E337F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{508E4BDB-E5C0-42C3-82C8-F73B9A13CD91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{508E4BDB-E5C0-42C3-82C8-F73B9A13CD91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{508E4BDB-E5C0-42C3-82C8-F73B9A13CD91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{508E4BDB-E5C0-42C3-82C8-F73B9A13CD91}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
