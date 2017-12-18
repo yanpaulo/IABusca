@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuscaAprofundamentoIterativo.cs" />
     <Compile Include="BuscaEmArvoreBase.cs" />
     <Compile Include="BuscaBidirecional.cs" />
     <Compile Include="BuscaEmLargura.cs" />
