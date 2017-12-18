@@ -29,7 +29,8 @@ namespace BuscaBidirecional
                 var filho = new No<T>
                 {
                     Pai = no,
-                    Estado = local
+                    Estado = local,
+                    Profundidade = no.Profundidade + 1
                 };
                 borda.Enqueue(filho);
 

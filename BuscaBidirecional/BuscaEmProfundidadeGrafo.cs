@@ -9,12 +9,17 @@ namespace BuscaBidirecional
     {
         private Stack<No<T>> borda = new Stack<No<T>>();
 
-        public BuscaEmProfundidadeGrafo(IProblema<T> problema)
+        private int? limite;
+
+        public BuscaEmProfundidadeGrafo(IProblema<T> problema, int? limite = null)
         {
+            Problema = problema;
+            this.limite = limite;
             Raiz = new No<T>
             {
                 Estado = problema.Origem
             };
+
             borda.Push(Raiz);
         }
 
@@ -33,6 +38,16 @@ namespace BuscaBidirecional
         public void Expande()
         {
             var no = borda.Pop();
+            if (no.Estado.Equals(Objetivo))
+            {
+                Objetivo = no;
+                return;
+            }
+            if (no.Profundidade >= limite)
+            {
+                return;
+            }
+
             var ligacoes = Problema.Caminhos(no.Estado).Where(l => !borda.Any(b => b.Estado.Equals(l)));
 
             foreach (var ligacao in ligacoes)
@@ -40,7 +55,8 @@ namespace BuscaBidirecional
                 var filho = new No<T>
                 {
                     Pai = no,
-                    Estado = ligacao
+                    Estado = ligacao,
+                    Profundidade = no.Profundidade + 1
                 };
                 borda.Push(filho);
 

@@ -20,5 +20,7 @@ namespace BuscaBidirecional
         public No<T> Pai { get; set; }
 
         public T Estado { get; set; }
+
+        public int Profundidade { get; set; }
     }
 }
