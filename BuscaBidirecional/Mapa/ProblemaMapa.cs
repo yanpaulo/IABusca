@@ -6,11 +6,11 @@ namespace BuscaBidirecional
     {
         public Mapa Mapa { get; set; }
 
-        public Local Origem { get; set; }
+        public Local Inicial { get; set; }
 
-        public Local Destino { get; set; }
+        public Local Objetivo { get; set; }
 
-        public IEnumerable<Local> Caminhos(Local local) =>
+        public IEnumerable<Local> Acoes(Local local) =>
             local.Ligacoes;
     }
 }

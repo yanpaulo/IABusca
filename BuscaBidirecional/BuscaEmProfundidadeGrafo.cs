@@ -17,7 +17,7 @@ namespace BuscaBidirecional
             this.limite = limite;
             Raiz = new No<T>
             {
-                Estado = problema.Origem
+                Estado = problema.Inicial
             };
 
             borda.Push(Raiz);
@@ -48,7 +48,7 @@ namespace BuscaBidirecional
                 return;
             }
 
-            var ligacoes = Problema.Caminhos(no.Estado).Where(l => !borda.Any(b => b.Estado.Equals(l)));
+            var ligacoes = Problema.Acoes(no.Estado).Where(l => !borda.Any(b => b.Estado.Equals(l)));
 
             foreach (var ligacao in ligacoes)
             {
@@ -60,7 +60,7 @@ namespace BuscaBidirecional
                 };
                 borda.Push(filho);
 
-                if (ligacao.Equals(Problema.Destino))
+                if (ligacao.Equals(Problema.Objetivo))
                 {
                     Objetivo = filho;
                     return;

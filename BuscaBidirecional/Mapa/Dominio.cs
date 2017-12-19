@@ -53,9 +53,6 @@ namespace BuscaBidirecional
         public List<Local> Ligacoes { get; private set; } =
             new List<Local>();
 
-        //public override string ToString() =>
-        //    $"{Nome}: {string.Join(", ", Ligacoes.Select(l => l.Nome))}";
-
         public override string ToString() =>
             Nome;
     }

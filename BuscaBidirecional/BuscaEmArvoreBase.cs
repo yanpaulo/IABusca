@@ -12,7 +12,7 @@ namespace BuscaBidirecional
             Problema = problema;
             Raiz = new No<T>
             {
-                Estado = Problema.Origem
+                Estado = Problema.Inicial
             };
         }
 

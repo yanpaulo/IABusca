@@ -28,15 +28,15 @@ namespace BuscaBidirecional.WebApp.Controllers
             
             if (ModelState.IsValid)
             {
-                problema.Origem = mapa.Locais.FirstOrDefault(l => l.Nome.ToLower().Contains(busca.LocalOrigem.ToLower()));
-                problema.Destino = mapa.Locais.FirstOrDefault(l => l.Nome.ToLower().Contains(busca.LocalDestino.ToLower()));
+                problema.Inicial = mapa.Locais.FirstOrDefault(l => l.Nome.ToLower().Contains(busca.LocalOrigem.ToLower()));
+                problema.Objetivo = mapa.Locais.FirstOrDefault(l => l.Nome.ToLower().Contains(busca.LocalDestino.ToLower()));
 
-                if (problema.Origem == null)
+                if (problema.Inicial == null)
                 {
                     ModelState.AddModelError("LocalOrigem", "Local não encontrado.");
                 }
 
-                if (problema.Destino == null)
+                if (problema.Objetivo == null)
                 {
                     ModelState.AddModelError("LocalDestino", "Local não encontrado.");
                 }

@@ -8,7 +8,7 @@ namespace BuscaBidirecional
 {
     public class BuscaAprofundamentoIterativo<T> : IAlgoritmo<T>
     {
-        private BuscaEmProfundidadeArvore<T> algoritmoProfundidade;
+        private IAlgoritmo<T> algoritmoProfundidade;
         
         public BuscaAprofundamentoIterativo(IProblema<T> problema)
         {

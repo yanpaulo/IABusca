@@ -14,21 +14,23 @@ namespace BuscasCustomizadas
         {
             var mapa = Mapa.FromFile();
             var matriz = new Matriz(5, 5);
+
             var problemaMapa = new ProblemaMapa
             {
                 Mapa = mapa,
-                Origem = mapa.Locais.Single(l => l.Nome == "Oradea"),
-                Destino = mapa.Locais.Single(l => l.Nome == "Timisoara")
+                Inicial = mapa.Locais.Single(l => l.Nome == "Oradea"),
+                Objetivo = mapa.Locais.Single(l => l.Nome == "Iasi")
             };
 
             var problemaAspirador = new ProblemaAspirador
             {
                 Matriz = matriz,
-                Origem = matriz[0, 0],
-                Destino = matriz[0, 4]
+                Inicial = matriz[0, 0],
+                Objetivo = matriz[4, 4]
             };
 
-            var algoritmo = new BuscaEmProfundidadeArvore<Posicao>(problemaAspirador);
+            var algoritmo = new BuscaAprofundamentoIterativo<Local>(problemaMapa);
+
             while (!algoritmo.AtingiuObjetivo && !algoritmo.Falha)
             {
                 Console.WriteLine(algoritmo.ImprimeListas());

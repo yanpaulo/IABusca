@@ -92,8 +92,8 @@ namespace BuscaBidirecional.ConsoleApp
             var problema = new ProblemaMapa
             {
                 Mapa = mapa,
-                Origem = origem,
-                Destino = destino
+                Inicial = origem,
+                Objetivo = destino
             };
             
             //cria a busca apropriada e a executa

@@ -4,10 +4,10 @@ namespace BuscaBidirecional
 {
     public interface IProblema<T>
     {
-        T Origem { get; set; }
-        T Destino { get; set; }
+        T Inicial { get; set; }
+        T Objetivo { get; set; }
         
 
-        IEnumerable<T> Caminhos(T estado);
+        IEnumerable<T> Acoes(T estado);
     }
 }

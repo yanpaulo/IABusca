@@ -24,7 +24,7 @@ namespace BuscaBidirecional
             var no = borda.Pop();
             Explorado.Add(no.Estado);
 
-            if (no.Estado.Equals(Problema.Destino))
+            if (no.Estado.Equals(Problema.Objetivo))
             {
                 Objetivo = no;
                 return;
@@ -35,7 +35,7 @@ namespace BuscaBidirecional
                 return;
             }
             
-            var caminhos = Problema.Caminhos(no.Estado).Where(c => !Explorado.Contains(c) && !borda.Any(b => b.Estado.Equals(c)));
+            var caminhos = Problema.Acoes(no.Estado).Where(c => !Explorado.Contains(c) && !borda.Any(b => b.Estado.Equals(c)));
 
             foreach (var caminho in caminhos)
             {
@@ -47,7 +47,7 @@ namespace BuscaBidirecional
                 };
                 borda.Push(filho);
 
-                if (caminho.Equals(Problema.Destino))
+                if (caminho.Equals(Problema.Objetivo))
                 {
                     Objetivo = filho;
                     return;

@@ -9,10 +9,10 @@ namespace BuscaBidirecional.Aspirador
     public class ProblemaAspirador : IProblema<Posicao>
     {
         public Matriz Matriz { get; set; }
-        public Posicao Origem { get; set; }
-        public Posicao Destino { get; set; }
+        public Posicao Inicial { get; set; }
+        public Posicao Objetivo { get; set; }
 
-        public IEnumerable<Posicao> Caminhos(Posicao estado)
+        public IEnumerable<Posicao> Acoes(Posicao estado)
         {
             //Esquerda
             if (estado.X > 0)

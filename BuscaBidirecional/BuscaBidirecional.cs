@@ -22,10 +22,10 @@ namespace BuscaBidirecional
             var inverso = new ProblemaMapa
             {
                 Mapa = problema.Mapa,
-                Origem = problema.Destino,
-                Destino = problema.Origem
+                Inicial = problema.Objetivo,
+                Objetivo = problema.Inicial
             };
-
+            
             this.a1 = a1 == TipoAlgoritmo.BuscaEmLargura ? 
                 new BuscaEmLargura<Local>(problema) as IAlgoritmo<Local> : 
                 new BuscaEmProfundidadeArvore<Local>(problema);
