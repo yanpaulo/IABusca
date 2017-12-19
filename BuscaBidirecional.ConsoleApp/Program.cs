@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BuscaBidirecional.Mapas;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -81,7 +82,7 @@ namespace BuscaBidirecional.ConsoleApp
                 }
 
             }
-
+            
             var mapa = mapFile != null ? Mapa.FromFile(mapFile) : Mapa.FromFile();
             var origem = mapa.Locais.SingleOrDefault(l => l.Nome.ToLower().Contains(orig.ToLower()));
             var destino = mapa.Locais.SingleOrDefault(l => l.Nome.ToLower().Contains(dest.ToLower()));

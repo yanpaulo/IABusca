@@ -1,5 +1,6 @@
 ﻿using BuscaBidirecional;
 using BuscaBidirecional.Aspirador;
+using BuscaBidirecional.Mapas;
 using System;
 
 namespace BuscasCustomizadas

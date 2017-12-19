@@ -1,4 +1,5 @@
 ﻿using BuscaBidirecional;
+using BuscaBidirecional.Mapas;
 using System;
 using System.Collections.Generic;
 using System.Linq;

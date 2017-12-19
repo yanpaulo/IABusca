@@ -48,11 +48,11 @@
     <Compile Include="BuscaEmLargura.cs" />
     <Compile Include="BuscaEmProfundidade.cs" />
     <Compile Include="BuscaEmProfundidadeComVisitados.cs" />
-    <Compile Include="Mapa\Dominio.cs" />
+    <Compile Include="Mapas\Dominio.cs" />
     <Compile Include="IAlgoritmo.cs" />
     <Compile Include="IProblema.cs" />
     <Compile Include="No.cs" />
-    <Compile Include="Mapa\ProblemaMapa.cs" />
+    <Compile Include="Mapas\ProblemaMapa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
