@@ -101,7 +101,7 @@ namespace BuscaBidirecional.ConsoleApp
             {
                 var busca = a == TipoAlgoritmo.BuscaEmLargura ? 
                     new BuscaEmLargura<Local>(problema) as IAlgoritmo<Local> : 
-                    new BuscaEmProfundidadeArvore<Local>(problema);
+                    new BuscaEmProfundidadeComVisitados<Local>(problema);
 
                 while (!busca.AtingiuObjetivo)
                 {

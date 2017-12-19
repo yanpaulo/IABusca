@@ -46,8 +46,8 @@
     <Compile Include="BuscaEmArvoreBase.cs" />
     <Compile Include="BuscaBidirecional.cs" />
     <Compile Include="BuscaEmLargura.cs" />
-    <Compile Include="BuscaEmProfundidadeGrafo.cs" />
-    <Compile Include="BuscaEmProfundidadeArvore.cs" />
+    <Compile Include="BuscaEmProfundidade.cs" />
+    <Compile Include="BuscaEmProfundidadeComVisitados.cs" />
     <Compile Include="Mapa\Dominio.cs" />
     <Compile Include="IAlgoritmo.cs" />
     <Compile Include="IProblema.cs" />

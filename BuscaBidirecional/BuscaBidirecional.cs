@@ -28,11 +28,11 @@ namespace BuscaBidirecional
             
             this.a1 = a1 == TipoAlgoritmo.BuscaEmLargura ? 
                 new BuscaEmLargura<Local>(problema) as IAlgoritmo<Local> : 
-                new BuscaEmProfundidadeArvore<Local>(problema);
+                new BuscaEmProfundidadeComVisitados<Local>(problema);
 
             this.a2 = a2 == TipoAlgoritmo.BuscaEmProfundidade ?
                 new BuscaEmLargura<Local>(inverso) as IAlgoritmo<Local> :
-                new BuscaEmProfundidadeArvore<Local>(inverso);
+                new BuscaEmProfundidadeComVisitados<Local>(inverso);
 
 
         }

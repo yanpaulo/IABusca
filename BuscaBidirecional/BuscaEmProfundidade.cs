@@ -5,13 +5,13 @@ using System.Linq;
 
 namespace BuscaBidirecional
 {
-    public class BuscaEmProfundidadeGrafo<T> : IAlgoritmo<T>
+    public class BuscaEmProfundidade<T> : IAlgoritmo<T>
     {
         private Stack<No<T>> borda = new Stack<No<T>>();
 
         private int? limite;
 
-        public BuscaEmProfundidadeGrafo(IProblema<T> problema, int? limite = null)
+        public BuscaEmProfundidade(IProblema<T> problema, int? limite = null)
         {
             Problema = problema;
             this.limite = limite;
@@ -48,19 +48,19 @@ namespace BuscaBidirecional
                 return;
             }
 
-            var ligacoes = Problema.Acoes(no.Estado).Where(l => !borda.Any(b => b.Estado.Equals(l)));
+            var resultados = Problema.Acoes(no.Estado).Where(l => !borda.Any(b => b.Estado.Equals(l)));
 
-            foreach (var ligacao in ligacoes)
+            foreach (var resultado in resultados)
             {
                 var filho = new No<T>
                 {
                     Pai = no,
-                    Estado = ligacao,
+                    Estado = resultado,
                     Profundidade = no.Profundidade + 1
                 };
                 borda.Push(filho);
 
-                if (Problema.TestaObjetivo(ligacao))
+                if (Problema.TestaObjetivo(resultado))
                 {
                     Objetivo = filho;
                     return;

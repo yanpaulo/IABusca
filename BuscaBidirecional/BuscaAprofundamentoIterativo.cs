@@ -13,7 +13,7 @@ namespace BuscaBidirecional
         public BuscaAprofundamentoIterativo(IProblema<T> problema)
         {
             Problema = problema;
-            algoritmoProfundidade = new BuscaEmProfundidadeArvore<T>(problema, Limite);
+            algoritmoProfundidade = new BuscaEmProfundidadeComVisitados<T>(problema, Limite);
         }
 
         public int Limite { get; private set; } = 0;
@@ -36,7 +36,7 @@ namespace BuscaBidirecional
         {
             if (algoritmoProfundidade.Falha)
             {
-                algoritmoProfundidade = new BuscaEmProfundidadeArvore<T>(Problema, ++Limite);
+                algoritmoProfundidade = new BuscaEmProfundidadeComVisitados<T>(Problema, ++Limite);
             }
             else
             {
