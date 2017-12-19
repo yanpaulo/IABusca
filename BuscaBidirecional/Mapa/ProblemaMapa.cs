@@ -8,9 +8,12 @@ namespace BuscaBidirecional
 
         public Local Inicial { get; set; }
 
-        public Local Objetivo { get; set; }
+        public Local Destino { get; set; }
 
         public IEnumerable<Local> Acoes(Local local) =>
             local.Ligacoes;
+
+        public bool TestaObjetivo(Local estado) =>
+            estado == Destino;
     }
 }

@@ -34,7 +34,7 @@ namespace BuscaBidirecional
                 };
                 borda.Enqueue(filho);
 
-                if (local.Equals(Problema.Objetivo))
+                if (Problema.TestaObjetivo(local))
                 {
                     Objetivo = filho;
                     return;

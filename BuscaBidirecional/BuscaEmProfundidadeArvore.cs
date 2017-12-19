@@ -24,7 +24,7 @@ namespace BuscaBidirecional
             var no = borda.Pop();
             Explorado.Add(no.Estado);
 
-            if (no.Estado.Equals(Problema.Objetivo))
+            if (Problema.TestaObjetivo(no.Estado))
             {
                 Objetivo = no;
                 return;
@@ -47,7 +47,7 @@ namespace BuscaBidirecional
                 };
                 borda.Push(filho);
 
-                if (caminho.Equals(Problema.Objetivo))
+                if (Problema.TestaObjetivo(caminho))
                 {
                     Objetivo = filho;
                     return;

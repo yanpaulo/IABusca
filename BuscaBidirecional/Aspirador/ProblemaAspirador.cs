@@ -6,31 +6,34 @@ using System.Threading.Tasks;
 
 namespace BuscaBidirecional.Aspirador
 {
-    public class ProblemaAspirador : IProblema<Posicao>
+    public class ProblemaAspirador : IProblema<Ambiente>
     {
-        public Matriz Matriz { get; set; }
-        public Posicao Inicial { get; set; }
-        public Posicao Objetivo { get; set; }
-
-        public IEnumerable<Posicao> Acoes(Posicao estado)
+        public ProblemaAspirador(Ambiente ambiente)
         {
-            //Esquerda
-            if (estado.X > 0)
+            Inicial = ambiente;
+        }
+        public Ambiente Inicial { get; private set; }
+        
+        public bool TestaObjetivo(Ambiente estado) =>
+            estado.Posicoes.All(p => p == EstadoPosicao.Limpo);
+
+        public IEnumerable<Ambiente> Acoes(Ambiente estado)
+        {
+            if (estado.Posicoes[estado.PosicaoAspirador] == EstadoPosicao.Sujo)
             {
-                yield return Matriz[estado.X - 1, estado.Y];
+                yield return new Ambiente(estado, true);
             }
-            if (estado.X < Matriz.Largura - 1)
+
+            if (estado.PosicaoAspirador > 0)
             {
-                yield return Matriz[estado.X + 1, estado.Y];
+                yield return new Ambiente(estado) { PosicaoAspirador = estado.PosicaoAspirador - 1 };
             }
-            if (estado.Y > 0)
+
+            if (estado.PosicaoAspirador < estado.Posicoes.Count() - 1)
             {
-                yield return Matriz[estado.X, estado.Y - 1];
-            }
-            if (estado.Y < Matriz.Largura - 1)
-            {
-                yield return Matriz[estado.X, estado.Y + 1];
+                yield return new Ambiente(estado) { PosicaoAspirador = estado.PosicaoAspirador + 1 };
             }
         }
+
     }
 }

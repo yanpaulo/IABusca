@@ -93,7 +93,7 @@ namespace BuscaBidirecional.ConsoleApp
             {
                 Mapa = mapa,
                 Inicial = origem,
-                Objetivo = destino
+                Destino = destino
             };
             
             //cria a busca apropriada e a executa

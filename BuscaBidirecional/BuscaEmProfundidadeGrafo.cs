@@ -60,7 +60,7 @@ namespace BuscaBidirecional
                 };
                 borda.Push(filho);
 
-                if (ligacao.Equals(Problema.Objetivo))
+                if (Problema.TestaObjetivo(ligacao))
                 {
                     Objetivo = filho;
                     return;

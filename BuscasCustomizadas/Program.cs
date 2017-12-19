@@ -1,10 +1,6 @@
 ﻿using BuscaBidirecional;
 using BuscaBidirecional.Aspirador;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BuscasCustomizadas
 {
@@ -13,23 +9,20 @@ namespace BuscasCustomizadas
         static void Main(string[] args)
         {
             var mapa = Mapa.FromFile();
-            var matriz = new Matriz(5, 5);
+            var ambiente = new Ambiente();
 
+            //TEstado: Local
             var problemaMapa = new ProblemaMapa
             {
                 Mapa = mapa,
-                Inicial = mapa.Locais.Single(l => l.Nome == "Oradea"),
-                Objetivo = mapa.Locais.Single(l => l.Nome == "Iasi")
+                Inicial = mapa.Cidade(Cidade.Zerind),
+                Destino = mapa.Cidade(Cidade.Eforie)
             };
 
-            var problemaAspirador = new ProblemaAspirador
-            {
-                Matriz = matriz,
-                Inicial = matriz[0, 0],
-                Objetivo = matriz[4, 4]
-            };
+            //TEstado: Ambiente
+            var problemaAspirador = new ProblemaAspirador(ambiente);
 
-            var algoritmo = new BuscaAprofundamentoIterativo<Local>(problemaMapa);
+            var algoritmo = new BuscaAprofundamentoIterativo<Ambiente>(problemaAspirador);
 
             while (!algoritmo.AtingiuObjetivo && !algoritmo.Falha)
             {
@@ -52,4 +45,5 @@ namespace BuscasCustomizadas
             }
         }
     }
+
 }
