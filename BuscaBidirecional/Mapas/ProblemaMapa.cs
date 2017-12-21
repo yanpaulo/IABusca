@@ -1,7 +1,7 @@
-﻿using BuscaBidirecional.Mapas;
+﻿using IABusca.Mapas;
 using System.Collections.Generic;
 
-namespace BuscaBidirecional.Mapas
+namespace IABusca.Mapas
 {
     public class ProblemaMapa : IProblema<Local>
     {

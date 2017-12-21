@@ -1,12 +1,12 @@
-﻿using BuscaBidirecional.Aspirador;
-using BuscaBidirecional.Mapas;
+﻿using IABusca.Aspirador;
+using IABusca.Mapas;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BuscaBidirecional.ConsoleApp
+namespace IABusca.ConsoleApp
 {
     class Program
     {
@@ -158,7 +158,7 @@ namespace BuscaBidirecional.ConsoleApp
                 "\talgoritmo:\r\n" +
                 "\t\tbfs - Busca em Largura (padrão)\r\n" +
                 "\t\tdfs [-l limite(padrão=null)] - Busca em profundidade\r\n" +
-                "\t\tbfsv [-l limite(padrão=null)] - Busca e profundidade com visitados \r\n" +
+                "\t\tdfsv [-l limite(padrão=null)] - Busca e profundidade com visitados \r\n" +
                 "\t\tidfs - Busca com aprofundamento iterativo\r\n" +
                 "\t\tbb - Busca Bidirecional (não documentado)\r\n" +
                 "\t -v:\r\n" +

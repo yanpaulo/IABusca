@@ -1,6 +1,6 @@
-﻿using BuscaBidirecional;
-using BuscaBidirecional.Aspirador;
-using BuscaBidirecional.Mapas;
+﻿using IABusca;
+using IABusca.Aspirador;
+using IABusca.Mapas;
 using System;
 
 namespace BuscasCustomizadas

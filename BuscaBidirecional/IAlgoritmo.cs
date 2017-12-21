@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BuscaBidirecional
+namespace IABusca
 {
     public interface IAlgoritmo <T>
     {

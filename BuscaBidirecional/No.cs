@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BuscaBidirecional
+namespace IABusca
 {
 
     public class No<T>

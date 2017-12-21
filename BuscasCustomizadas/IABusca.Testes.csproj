@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FAC117F2-2CAF-4850-BE57-B430CAD69E6A}</ProjectGuid>
+    <ProjectGuid>{508E4BDB-E5C0-42C3-82C8-F73B9A13CD91}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>BuscaBidirecional.ConsoleApp</RootNamespace>
-    <AssemblyName>busca</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <RootNamespace>BuscasCustomizadas</RootNamespace>
+    <AssemblyName>BuscasCustomizadas</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MapaEnumExtensions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -49,9 +50,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BuscaBidirecional\BuscaBidirecional.csproj">
-      <Project>{1a5064bf-dc38-4bb7-8e4c-764d93e337f0}</Project>
-      <Name>BuscaBidirecional</Name>
+    <ProjectReference Include="..\BuscaBidirecional\IABusca.csproj">
+      <Project>{1A5064BF-DC38-4BB7-8E4C-764D93E337F0}</Project>
+      <Name>IABusca</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

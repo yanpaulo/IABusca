@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace BuscaBidirecional.Mapas
+namespace IABusca.Mapas
 {
     public class Mapa
     {

@@ -1,12 +1,12 @@
-﻿using BuscaBidirecional.WebApp.Models;
+﻿using IABusca.WebApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using BuscaBidirecional.Mapas;
+using IABusca.Mapas;
 
-namespace BuscaBidirecional.WebApp.Controllers
+namespace IABusca.WebApp.Controllers
 {
     public class BuscaController : Controller
     {

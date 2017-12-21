@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace BuscaBidirecional.WebApp
+namespace IABusca.WebApp
 {
     public class BundleConfig
     {

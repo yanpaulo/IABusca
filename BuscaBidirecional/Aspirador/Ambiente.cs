@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BuscaBidirecional.Aspirador
+namespace IABusca.Aspirador
 {
     public enum EstadoPosicao
     {

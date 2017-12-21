@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace BuscaBidirecional.WebApp.Controllers
+namespace IABusca.WebApp.Controllers
 {
     public class HomeController : Controller
     {

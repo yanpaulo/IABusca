@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace BuscaBidirecional.WebApp
+namespace IABusca.WebApp
 {
     public class FilterConfig
     {

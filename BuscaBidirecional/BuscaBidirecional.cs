@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
-using BuscaBidirecional.Mapas;
+using IABusca.Mapas;
 
-namespace BuscaBidirecional
+namespace IABusca
 {
     public enum TipoAlgoritmo
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 
-namespace BuscaBidirecional
+namespace IABusca
 {
     public class BuscaEmProfundidadeComVisitados<T> : BuscaEmArvoreBase<T>
     {
