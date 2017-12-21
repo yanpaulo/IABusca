@@ -207,7 +207,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BuscaBidirecional\IABusca.csproj">
+    <ProjectReference Include="..\IABusca\IABusca.csproj">
       <Project>{1a5064bf-dc38-4bb7-8e4c-764d93e337f0}</Project>
       <Name>IABusca</Name>
     </ProjectReference>

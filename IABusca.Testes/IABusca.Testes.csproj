@@ -50,7 +50,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BuscaBidirecional\IABusca.csproj">
+    <ProjectReference Include="..\IABusca\IABusca.csproj">
       <Project>{1A5064BF-DC38-4BB7-8E4C-764D93E337F0}</Project>
       <Name>IABusca</Name>
     </ProjectReference>
