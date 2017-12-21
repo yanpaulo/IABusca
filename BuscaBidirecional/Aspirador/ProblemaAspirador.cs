@@ -13,26 +13,25 @@ namespace BuscaBidirecional.Aspirador
             Inicial = ambiente;
         }
         public Ambiente Inicial { get; private set; }
-        
+
         public bool TestaObjetivo(Ambiente estado) =>
             estado.Posicoes.All(p => p == EstadoPosicao.Limpo);
 
         public IEnumerable<Ambiente> Acoes(Ambiente estado)
         {
-            if (estado.Posicoes[estado.PosicaoAspirador] == EstadoPosicao.Sujo)
-            {
-                yield return new Ambiente(estado, true);
-            }
+            yield return new Ambiente(estado, true);
 
-            if (estado.PosicaoAspirador > 0)
+            yield return new Ambiente(estado)
             {
-                yield return new Ambiente(estado) { PosicaoAspirador = estado.PosicaoAspirador - 1 };
-            }
+                PosicaoAspirador = estado.PosicaoAspirador > 0 ? 
+                                        estado.PosicaoAspirador - 1 : estado.PosicaoAspirador
+            };
 
-            if (estado.PosicaoAspirador < estado.Posicoes.Count() - 1)
+            yield return new Ambiente(estado)
             {
-                yield return new Ambiente(estado) { PosicaoAspirador = estado.PosicaoAspirador + 1 };
-            }
+                PosicaoAspirador = estado.PosicaoAspirador < estado.Posicoes.Count() - 1 ? 
+                                        estado.PosicaoAspirador + 1 : estado.PosicaoAspirador
+            };
         }
 
     }
