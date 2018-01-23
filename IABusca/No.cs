@@ -10,5 +10,7 @@ namespace IABusca
         public T Estado { get; set; }
 
         public int Profundidade { get; set; }
+
+        public int? Custo { get; set; }
     }
 }
