@@ -23,7 +23,7 @@ namespace BuscasCustomizadas
             //TEstado: Ambiente
             var problemaAspirador = new ProblemaAspirador(ambiente);
 
-            var algoritmo = new BuscaGulosa(problemaMapa);
+            var algoritmo = new BuscaCustoUniforme<Local>(problemaMapa);
 
             while (!algoritmo.AtingiuObjetivo && !algoritmo.Falha)
             {
@@ -31,12 +31,15 @@ namespace BuscasCustomizadas
                 algoritmo.Expande();
             }
 
+            Console.WriteLine(algoritmo.ImprimeListas());
+
             if (algoritmo.Falha)
             {
                 Console.WriteLine("Falha!");
             }
             else
             {
+                Console.WriteLine("Resultado: ");
                 Console.WriteLine(algoritmo.ImprimeCaminho());
             }
 

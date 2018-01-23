@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace IABusca.Mapas
 {
-    public class ProblemaMapa : IProblema<Local>
+    public class ProblemaMapa : IProblemaHeuristica<Local>
     {
         public Mapa Mapa { get; set; }
 
@@ -17,5 +17,8 @@ namespace IABusca.Mapas
 
         public bool TestaObjetivo(Local estado) =>
             estado == Destino;
+
+        public int ValorHeuristica(Local estado) =>
+            estado.DLR[Destino];
     }
 }

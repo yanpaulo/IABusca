@@ -44,6 +44,7 @@
     <Compile Include="Aspirador\Ambiente.cs" />
     <Compile Include="Aspirador\ProblemaAspirador.cs" />
     <Compile Include="BuscaAprofundamentoIterativo.cs" />
+    <Compile Include="BuscaAEstrela.cs" />
     <Compile Include="BuscaCustoUniforme.cs" />
     <Compile Include="BuscaEmArvoreBase.cs" />
     <Compile Include="BuscaBidirecional.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="BuscaEmProfundidade.cs" />
     <Compile Include="BuscaEmProfundidadeComVisitados.cs" />
     <Compile Include="BuscaGulosa.cs" />
+    <Compile Include="IProblemaHeuristica.cs" />
     <Compile Include="Mapas\Dominio.cs" />
     <Compile Include="IAlgoritmo.cs" />
     <Compile Include="IProblema.cs" />

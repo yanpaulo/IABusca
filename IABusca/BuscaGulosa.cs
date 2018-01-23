@@ -7,22 +7,21 @@ using System.Threading.Tasks;
 
 namespace IABusca
 {
-    public class BuscaGulosa : IAlgoritmo<Local>
+    public class BuscaGulosa<T> : IAlgoritmo<T>
     {
-        private List<No<Local>> borda = new List<No<Local>>();
-        private ProblemaMapa problema;
-
-        public BuscaGulosa(ProblemaMapa problema)
+        private List<No<T>> borda = new List<No<T>>();
+        private IProblemaHeuristica<T> problema;
+        public BuscaGulosa(IProblemaHeuristica<T> problema)
         {
             this.problema = problema;
-            borda.Add(new No<Local> { Estado = problema.Inicial });
+            borda.Add(new No<T> { Estado = problema.Inicial });
         }
 
-        public IProblema<Local> Problema => problema;
+        public IProblema<T> Problema => problema;
 
-        public No<Local> Objetivo { get; private set; }
+        public No<T> Objetivo { get; private set; }
 
-        public IEnumerable<No<Local>> Borda => borda;
+        public IEnumerable<No<T>> Borda => borda;
 
         public bool Falha => !Borda.Any();
 
@@ -30,14 +29,14 @@ namespace IABusca
 
         public void Expande()
         {
-            var pai = borda.OrderBy(n => n.Estado.DLR[problema.Destino]).First();
+            var pai = borda.OrderBy(n => problema.ValorHeuristica(n.Estado)).First();
             borda.Remove(pai);
 
             var acoes = Problema.Acoes(pai.Estado).Where(a => !Borda.Any(n => a.Resultado.Equals(n.Estado)));
 
             foreach (var acao in acoes)
             {
-                var no = new No<Local>
+                var no = new No<T>
                 {
                     Estado = acao.Resultado,
                     Pai = pai,
