@@ -18,3 +18,5 @@ Eforie: Hirsova-86
 Vaslui: Urziceni-142, Iasi-92
 Iasi: Vaslui-92, Neamt-87
 Neamt: Iasi-87
+
+Bucareste: Bucareste-0, Arad-366, Craiova-160, Drobeta-242, Eforie-161, Fagaras-176, Giurgiu-77, Hirsova-151, Iasi-226, Lugoj-244, Mehadia-241, Neamt-234, Oradea-380, Pitesti-100, Rimnicu Vileea-193, Sibiu-253, Timisoara-329, Urziceni-80, Vaslui-199, Zerind-374

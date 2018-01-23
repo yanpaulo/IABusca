@@ -16,14 +16,14 @@ namespace BuscasCustomizadas
             var problemaMapa = new ProblemaMapa
             {
                 Mapa = mapa,
-                Inicial = mapa.Cidade(Cidade.Bucareste),
-                Destino = mapa.Cidade(Cidade.Zerind)
+                Inicial = mapa.Cidade(Cidade.Arad),
+                Destino = mapa.Cidade(Cidade.Bucareste)
             };
 
             //TEstado: Ambiente
             var problemaAspirador = new ProblemaAspirador(ambiente);
 
-            var algoritmo = new BuscaCustoUniforme<Local>(problemaMapa);
+            var algoritmo = new BuscaGulosa(problemaMapa);
 
             while (!algoritmo.AtingiuObjetivo && !algoritmo.Falha)
             {

@@ -52,7 +52,9 @@ namespace IABusca.Mapas
 
                 foreach (var valor in valores)
                 {
-                    local.DLR.Add(GerOrCreateLocal(mapa, valor.Nome), valor.DLR);
+                    var destino = GerOrCreateLocal(mapa, valor.Nome);
+                    local.DLR.Add(destino, valor.DLR);
+                    destino.DLR[local] = valor.DLR;
                 }
             }
 

@@ -13,7 +13,7 @@ namespace IABusca.Mapas
         public Local Destino { get; set; }
 
         public IEnumerable<Acao<Local>> Acoes(Local local) =>
-            local.Ligacoes.Select(l => new Acao<Local> { Estado = local, Resultado = l.Local, Custo = l.Distancia });
+            local.Ligacoes.Select(l => new Acao<Local> { Resultado = l.Local, Custo = l.Distancia });
 
         public bool TestaObjetivo(Local estado) =>
             estado == Destino;

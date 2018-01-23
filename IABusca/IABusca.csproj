@@ -50,6 +50,7 @@
     <Compile Include="BuscaEmLargura.cs" />
     <Compile Include="BuscaEmProfundidade.cs" />
     <Compile Include="BuscaEmProfundidadeComVisitados.cs" />
+    <Compile Include="BuscaGulosa.cs" />
     <Compile Include="Mapas\Dominio.cs" />
     <Compile Include="IAlgoritmo.cs" />
     <Compile Include="IProblema.cs" />

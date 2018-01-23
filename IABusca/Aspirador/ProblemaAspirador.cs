@@ -19,11 +19,10 @@ namespace IABusca.Aspirador
 
         public IEnumerable<Acao<Ambiente>> Acoes(Ambiente estado)
         {
-            yield return new Acao<Ambiente> { Estado = estado, Resultado = new Ambiente(estado, true) };
+            yield return new Acao<Ambiente> { Resultado = new Ambiente(estado, true) };
 
             yield return new Acao<Ambiente>
             {
-                Estado = estado,
                 Resultado = new Ambiente(estado)
                 {
                     PosicaoAspirador = estado.PosicaoAspirador > 0 ?
@@ -33,7 +32,6 @@ namespace IABusca.Aspirador
 
             yield return new Acao<Ambiente>
             {
-                Estado = estado,
                 Resultado = new Ambiente(estado)
                 {
                     PosicaoAspirador = estado.PosicaoAspirador < estado.Posicoes.Count() - 1 ?
