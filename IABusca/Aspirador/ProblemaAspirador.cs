@@ -17,21 +17,30 @@ namespace IABusca.Aspirador
         public bool TestaObjetivo(Ambiente estado) =>
             estado.Posicoes.All(p => p == EstadoPosicao.Limpo);
 
-        public IEnumerable<Ambiente> Acoes(Ambiente estado)
+        public IEnumerable<Acao<Ambiente>> Acoes(Ambiente estado)
         {
-            yield return new Ambiente(estado, true);
+            yield return new Acao<Ambiente> { Estado = estado, Resultado = new Ambiente(estado, true) };
 
-            yield return new Ambiente(estado)
+            yield return new Acao<Ambiente>
             {
-                PosicaoAspirador = estado.PosicaoAspirador > 0 ? 
+                Estado = estado,
+                Resultado = new Ambiente(estado)
+                {
+                    PosicaoAspirador = estado.PosicaoAspirador > 0 ?
                                         estado.PosicaoAspirador - 1 : estado.PosicaoAspirador
+                }
             };
 
-            yield return new Ambiente(estado)
+            yield return new Acao<Ambiente>
             {
-                PosicaoAspirador = estado.PosicaoAspirador < estado.Posicoes.Count() - 1 ? 
+                Estado = estado,
+                Resultado = new Ambiente(estado)
+                {
+                    PosicaoAspirador = estado.PosicaoAspirador < estado.Posicoes.Count() - 1 ?
                                         estado.PosicaoAspirador + 1 : estado.PosicaoAspirador
+                }
             };
+             
         }
 
     }

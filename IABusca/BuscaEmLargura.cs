@@ -22,7 +22,9 @@ namespace IABusca
             var no = borda.Dequeue();
             Explorado.Add(no.Estado);
             
-            var resultados = Problema.Acoes(no.Estado).Where(e => !Explorado.Contains(e) && !borda.Any(b => b.Estado.Equals(e)));
+            var resultados = Problema.Acoes(no.Estado)
+                .Where(e => !Explorado.Contains(e.Resultado) && !borda.Any(b => b.Estado.Equals(e.Resultado)))
+                .Select(a => a.Resultado);
 
             foreach (var resultado in resultados)
             {

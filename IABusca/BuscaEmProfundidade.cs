@@ -48,7 +48,9 @@ namespace IABusca
                 return;
             }
 
-            var resultados = Problema.Acoes(no.Estado).Where(l => !borda.Any(b => b.Estado.Equals(l)));
+            var resultados = Problema.Acoes(no.Estado)
+                .Where(a => !borda.Any(b => b.Estado.Equals(a.Resultado)))
+                .Select(a => a.Resultado);
 
             foreach (var resultado in resultados)
             {

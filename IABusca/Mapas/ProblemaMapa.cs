@@ -1,5 +1,6 @@
 ﻿using IABusca.Mapas;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace IABusca.Mapas
 {
@@ -11,8 +12,8 @@ namespace IABusca.Mapas
 
         public Local Destino { get; set; }
 
-        public IEnumerable<Local> Acoes(Local local) =>
-            local.Ligacoes;
+        public IEnumerable<Acao<Local>> Acoes(Local local) =>
+            local.Ligacoes.Select(l => new Acao<Local> { Estado = local, Resultado = l });
 
         public bool TestaObjetivo(Local estado) =>
             estado == Destino;
