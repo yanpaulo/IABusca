@@ -22,11 +22,12 @@ namespace IABusca.Mapas
                 var valores = line
                     .Remove(0, line.IndexOf(":") + 1)
                     .Split(new[] { ',' })
-                    .Select(p => p.Trim());
+                    .Select(p => p.Trim().Split(new[] { '-' }))
+                    .Select(p => new { Nome = p[0], Distancia = int.Parse(p[1]) });
 
                 var local = GerOrCreateLocal(mapa, nome);
                 
-                local.Ligacoes.AddRange(valores.Select(v => GerOrCreateLocal(mapa, v)));
+                local.Ligacoes.AddRange(valores.Select(v => new Ligacao { Local = GerOrCreateLocal(mapa, v.Nome), Distancia = v.Distancia }));
 
             }
 
@@ -50,10 +51,17 @@ namespace IABusca.Mapas
     {
         public string Nome { get; set; }
 
-        public List<Local> Ligacoes { get; private set; } =
-            new List<Local>();
+        public List<Ligacao> Ligacoes { get; private set; } =
+            new List<Ligacao>();
 
         public override string ToString() =>
             Nome;
+    }
+
+    public class Ligacao
+    {
+        public Local Local { get; set; }
+
+        public int Distancia { get; set; }
     }
 }
