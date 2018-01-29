@@ -20,12 +20,16 @@ namespace IABusca.ConsoleApp
                     Console.ReadKey();
                 }
             }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine();
+                ImprimeAjuda();
+            }
             catch (InvalidOperationException ex)
             {
                 Console.WriteLine(ex.Message);
-                ImprimeAjuda();
             }
-
         }
 
         private static void Run(string[] args)
@@ -88,8 +92,10 @@ namespace IABusca.ConsoleApp
                             .Executa(verbose);
                     }
                     break;
+                case null:
+                    throw new ArgumentException("Problema não especificado.");
                 default:
-                    throw new InvalidOperationException("");
+                    throw new ArgumentException("Problema não reconhecido.");
             }
         }
 
@@ -109,12 +115,13 @@ namespace IABusca.ConsoleApp
                 case "idfs":
                     return new BuscaAprofundamentoIterativo<T>(problema);
                 case "bb":
+                    #region Busca Bidirecional
                     if (!(problema is ProblemaMapa))
                     {
-                        throw new InvalidOperationException("No momento, busca bidirecional só suporta o problema do mapa da Romênia.");
+                        throw new ArgumentException("Problema não suportado por Busca Bidirecional.");
                     }
-                    TipoAlgoritmo 
-                        a1 = TipoAlgoritmo.BuscaEmLargura, 
+                    TipoAlgoritmo
+                        a1 = TipoAlgoritmo.BuscaEmLargura,
                         a2 = TipoAlgoritmo.BuscaEmLargura;
 
                     switch (dict.GetValueOrDefault("a1", "bfs"))
@@ -126,7 +133,7 @@ namespace IABusca.ConsoleApp
                             a1 = TipoAlgoritmo.BuscaEmProfundidade;
                             break;
                         default:
-                            throw new InvalidOperationException("");
+                            throw new ArgumentException("Algoritmo inválido para Busca Bidirecional.");
                     }
 
                     switch (dict.GetValueOrDefault("a2", "bfs"))
@@ -138,15 +145,35 @@ namespace IABusca.ConsoleApp
                             a2 = TipoAlgoritmo.BuscaEmProfundidade;
                             break;
                         default:
-                            throw new InvalidOperationException("");
+                            throw new ArgumentException("Algoritmo inválido para Busca Bidirecional.");
                     }
 
                     return new BuscaBidirecional(problema as ProblemaMapa, a1, a2) as IAlgoritmo<T>;
+                #endregion
+                case "bcu":
+                    return new BuscaCustoUniforme<T>(problema);
+                case "bgl":
+                    {
+                        if (problema is IProblemaHeuristica<T> p)
+                        {
+                            return new BuscaGulosa<T>(p);
+                        }
+                        throw new ArgumentException("Tipo de problema não suportado por Busca Gulosa.");
+                    }
+                case "ba*":
+                    {
+                        if (problema is IProblemaHeuristica<T> p)
+                        {
+                            return new BuscaAEsrela<T>(p);
+                        }
+
+                        throw new ArgumentException("Tipo de problema não suportado Busca A*.");
+                    }
                 default:
-                    throw new InvalidOperationException("Argumento inválido.");
+                    throw new ArgumentException("Algoritmo inválido.");
             }
         }
-        
+
         private static void ImprimeAjuda()
         {
             const string str = "Uso: \r\n" +
@@ -160,7 +187,10 @@ namespace IABusca.ConsoleApp
                 "\t\tdfs [-l limite(padrão=null)] - Busca em profundidade\r\n" +
                 "\t\tdfsv [-l limite(padrão=null)] - Busca e profundidade com visitados \r\n" +
                 "\t\tidfs - Busca com aprofundamento iterativo\r\n" +
-                "\t\tbb - Busca Bidirecional (não documentado)\r\n" +
+                "\t\tbb [-a1 bfs|dfs (padrão bfs)] [-a2 bfs|dfs (padrão bfs)] - Busca Bidirecional\r\n" +
+                "\t\tbcu - Busca de Custo Uniforme\r\n" +
+                "\t\tbgl - Busca Gulosa\r\n" +
+                "\t\tba* - Busca A*\r\n" +
                 "\t -v:\r\n" +
                 "\t\tMostra a saída detalhada da execução do algoritmo.\n\n" +
                 "\tExemplos:\r\n" +
@@ -193,7 +223,7 @@ namespace IABusca.ConsoleApp
             {
                 if (verbose)
                 {
-                    Console.WriteLine(algoritmo.ImprimeListas()); 
+                    Console.WriteLine(algoritmo.ImprimeListas());
                 }
                 algoritmo.Expande();
             }

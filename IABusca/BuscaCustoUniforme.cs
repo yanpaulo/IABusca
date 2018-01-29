@@ -38,7 +38,7 @@ namespace IABusca
                 {
                     Pai = pai,
                     Estado = a.Resultado,
-                    Custo = pai.Custo + (a.Custo ?? throw new InvalidOperationException("Ação com custo nulo."))
+                    Custo = pai.Custo + (a.Custo ?? throw new InvalidOperationException("Foi encontrada uma ação com custo nulo. Impossível continuar."))
                 };
                 if (!Explorado.Contains(no.Estado) && !Borda.Any(n => n.Estado.Equals(no.Estado)))
                 {

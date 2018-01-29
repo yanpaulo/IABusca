@@ -1,4 +1,5 @@
 ﻿using IABusca.Mapas;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -19,6 +20,8 @@ namespace IABusca.Mapas
             estado == Destino;
 
         public int ValorHeuristica(Local estado) =>
-            estado.DLR[Destino];
+            estado.DLR.ContainsKey(Destino) ? 
+                estado.DLR[Destino] : 
+                throw new InvalidOperationException("Não há heurística sobre o local de destino.");
     }
 }
